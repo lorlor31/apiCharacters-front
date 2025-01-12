@@ -63,3 +63,36 @@ export default defineConfig({
 et remplacer l'adresse 
 dans `const response = await axios.get(`http://0.0.0.0:8000/characters/1`);`
 par `const response = await axios.get(`/characters/1`);`
+- Mais autan désactiver la CORS dans symfo avec nelmio cors bundle.
+
+## Routes
+
+1. Installer la lib react-router
+
+` npm install react-router-dom`
+
+2. Conf du router ds app.js
+
+```js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home'; // Page principale
+import CharacterDetail from './pages/CharacterDetail'; // Page de détail d'un personnage
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        {/* Route pour la page d'accueil */}
+        <Route path="/" element={<Home />} />
+        
+        {/* Route dynamique pour les détails d'un personnage */}
+        <Route path="/character/:id" element={<CharacterDetail />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
+```
